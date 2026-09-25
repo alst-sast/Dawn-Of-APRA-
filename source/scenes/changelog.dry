@@ -1,0 +1,11 @@
+title: Changelog
+scene-id: changelog
+is-card: false
+
+= Version History
+
+**v1.0.0**
+- Initial deployment of Dawn of APRA.
+- Configured main menu UI and event pipeline.
+
+- @root: Return to Main Menu
