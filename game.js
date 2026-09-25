@@ -16,7 +16,7 @@
     // Add your custom code here.
   };
 
-  var TITLE = "Dawn of APRA" + '_' + "alst-sast";
+  var TITLE = "Dawn of APRA" + '_' + "ALST-SAST";
 
   window.showStats = function() {
     if (window.dendryUI.dendryEngine.state.sceneId.startsWith('stats')) {
