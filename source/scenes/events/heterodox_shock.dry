@@ -1,0 +1,21 @@
+title: The Heterodox Economic Package
+scene-id: heterodox_shock
+is-card: true
+tags: economic_policy
+
+Your economic advisers propose freezing basic commodity prices and capping foreign debt payments at 10% of total export earnings.
+
+- @enact_cap: Enact price freezes and the 10% foreign debt cap.
+- @reject_cap: Reject price controls and pursue fiscal austerity.
+
+@enact_cap
+on-arrival: presidential_approval += 15; inflation_rate -= 10; foreign_reserves += 50
+go-to: main
+
+Public popularity surges among working-class voters, but foreign central banks freeze credit lines.
+
+@reject_cap
+on-arrival: presidential_approval -= 15; foreign_reserves -= 100
+go-to: main
+
+Party militants accuse you of betraying Victor Raúl Haya de la Torre’s anti-imperialist legacy.

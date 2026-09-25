@@ -1,0 +1,16 @@
+title: Main Dashboard - Palacio de Gobierno
+scene-id: main
+is-card: false
+
+= Palacio de Gobierno - Lima, Peru
+
+**Presidential Approval:** [+ presidential_approval +]%
+**Inflation Rate:** [+ inflation_rate +]%
+**Foreign Reserves:** $[+ foreign_reserves +]M USD
+**Sendero Threat Level:** [+ sendero_threat +]/100
+**Armed Forces Coup Risk:** [+ coup_risk +]/100
+
+Priority Interventions
+
+- @heterodox_shock: Implement Emergency Price Controls
+- @apagones: Address High-Tension Power Tower Attacks

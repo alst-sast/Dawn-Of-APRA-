@@ -1,0 +1,12 @@
+{
+  "name": "dawn-of-apra",
+  "version": "1.0.0",
+  "description": "APRA and Peru political simulation built on Dendry",
+  "main": "index.js",
+  "scripts": {
+    "build": "dendrynexus make-html"
+  },
+  "dependencies": {
+    "dendrynexus": "github:aucchen/dendrynexus"
+  }
+}

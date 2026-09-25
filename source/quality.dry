@@ -1,0 +1,26 @@
+# Presidential & Economic Metrics
+name: presidential_approval
+initial: 65
+min: 0
+max: 100
+
+name: inflation_rate
+initial: 15
+min: 0
+max: 7500
+
+name: foreign_reserves
+initial: 900
+min: 0
+max: 3000
+
+# Security & Coup Metrics
+name: sendero_threat
+initial: 35
+min: 0
+max: 100
+
+name: coup_risk
+initial: 10
+min: 0
+max: 100
