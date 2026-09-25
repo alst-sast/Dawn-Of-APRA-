@@ -1,16 +1,14 @@
-title: Main Dashboard - Palacio de Gobierno
-scene-id: main
+title: DAWN OF APRA
+scene-id: root
 is-card: false
+type: menu
 
-= Palacio de Gobierno - Lima, Peru
+= DAWN OF APRA: PERU 1985–1992
 
-**Presidential Approval:** [+ presidential_approval +]%
-**Inflation Rate:** [+ inflation_rate +]%
-**Foreign Reserves:** $[+ foreign_reserves +]M USD
-**Sendero Threat Level:** [+ sendero_threat +]/100
-**Armed Forces Coup Risk:** [+ coup_risk +]/100
+[!align center]
+img: img/cover_art.jpg
 
-Priority Interventions
-
-- @heterodox_shock: Implement Emergency Price Controls
-- @apagones: Address High-Tension Power Tower Attacks
+- @start: Start game
+- @options: Options
+- @changelog: Changelog
+- @credits: Credits

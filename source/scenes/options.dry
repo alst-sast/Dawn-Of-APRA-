@@ -1,0 +1,9 @@
+title: Options
+scene-id: options
+is-card: false
+
+= Game Options
+
+Toggle game display settings and sound effects directly in the Dendry sidebar menu during play.
+
+- @root: Return to Main Menu
