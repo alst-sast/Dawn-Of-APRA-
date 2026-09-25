@@ -1,9 +1,0 @@
-title: Options
-scene-id: options
-is-card: false
-
-= Game Options
-
-Toggle game display settings and audio options in the sidebar menu during play.
-
-- @root: Return to Main Menu
