@@ -1,0 +1,15 @@
+title: Main Menu
+scene-id: root
+is-card: false
+type: menu
+
+= DAWN OF APRA
+
+[!align center]
+img: img/cover_art.jpg
+
+[!align center]
+- @start: Start game
+- @options: Options
+- @changelog: Changelog
+- @credits: Credits
