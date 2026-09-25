@@ -16,7 +16,7 @@
     // Add your custom code here.
   };
 
-  var TITLE = "Red Autumn: Apagón en Lima" + '_' + "Your Name";
+  var TITLE = "Dawn of APRA" + '_' + "alst-sast";
 
   window.showStats = function() {
     if (window.dendryUI.dendryEngine.state.sceneId.startsWith('stats')) {
