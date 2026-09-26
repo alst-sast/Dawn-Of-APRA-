@@ -12,4 +12,5 @@ img: img/cover_art.jpg
 - @start: Start game
 - @options: Options
 - @changelog: Changelog
+- @discord: Discord
 - @credits: Credits
