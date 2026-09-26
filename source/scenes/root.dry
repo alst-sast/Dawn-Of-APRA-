@@ -8,7 +8,6 @@ type: menu
 [!align center]
 img: img/cover_art.jpg
 
-[!align center]
 - @start: Start game
 - @options: Options
 - @changelog: Changelog
