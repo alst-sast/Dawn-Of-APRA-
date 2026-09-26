@@ -1,60 +1,47 @@
-/* Dark retro background */
-html, body {
-  background-color: #121212 !important;
-  color: #e0e0e0 !important;
-  font-family: 'Georgia', serif;
+/* Center Title */
+#game h1 {
+  text-align: center;
+  font-family: "Georgia", serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #2b2b2b;
+  margin-bottom: 30px;
+}
+
+/* Outer Border Box for Menu Choices */
+#game .choices {
+  border: 2px solid #7d6b5d;
+  border-radius: 6px;
+  background-color: #faf6f0;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+/* Individual Box Options with Separator Lines */
+#game .choices li {
+  border-bottom: 1px solid #7d6b5d;
   margin: 0;
   padding: 0;
 }
 
-/* Central game container matching Red Autumn card width */
-#wrapper, #content, .content, #main {
-  max-width: 800px;
-  margin: 0 auto !important;
-  padding: 20px;
-  background-color: #1e1e1e;
-  min-height: 100vh;
-  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+#game .choices li:last-child {
+  border-bottom: none;
 }
 
-/* Title Header */
-h1, h2, h3 {
-  color: #d4af37 !important;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* Banner image formatting */
-img {
-  max-width: 100% !important;
-  height: auto;
-  border: 2px solid #444;
+/* Styling Links inside the Box */
+#game .choices a {
   display: block;
-  margin: 15px auto;
-}
-
-/* Choice links & buttons */
-.choice-list, ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-a, .choice {
-  display: block;
-  background-color: #2a2a2a;
-  color: #d4af37 !important;
-  text-decoration: none !important;
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: 1px solid #444;
-  border-radius: 4px;
-  text-align: center;
+  padding: 15px 20px;
+  color: #8b0000;
+  font-family: "Georgia", serif;
+  font-size: 1.1rem;
   font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
 }
 
-a:hover, .choice:hover {
-  background-color: #383838;
-  border-color: #d4af37;
-  color: #ffffff !important;
+/* Hover Effect */
+#game .choices a:hover {
+  background-color: #efe8de;
 }
