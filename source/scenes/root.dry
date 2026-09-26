@@ -3,14 +3,9 @@ scene-id: root
 is-card: false
 type: menu
 
-= DAWN OF APRA
+= DAWN OF APRA: AN ALTERNATE HISTORY
 
-[!align center]
-img: img/cover_art.jpg
-
-[!align center]
 - @start: Start game
-- @options: Options
-- @changelog: Changelog
-- @discord: Discord
+- @election_simulation: Election simulation
 - @credits: Credits
+- @achievements: Achievements
