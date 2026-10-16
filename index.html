@@ -1,0 +1,539 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Dawn of APRA</title>
+<style>
+:root {
+  --bg:#171715; --panel:#22211d; --panel2:#292720;
+  --border:#454035; --cream:#eee5d4; --muted:#aaa08d;
+  --red:#a7463e; --gold:#c7a86d; --green:#829778;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--cream);
+  font-family:Arial,Helvetica,sans-serif;font-size:13px}
+button{font:inherit;cursor:pointer}
+.topbar{display:flex;justify-content:space-between;align-items:center;
+  gap:16px;padding:17px 25px;background:#1d1c19;
+  border-bottom:1px solid var(--border)}
+.brand{display:flex;align-items:center;gap:13px}
+.brand-mark{width:47px;height:47px;display:grid;place-items:center;
+  background:var(--red);font:bold 29px Georgia;color:white}
+.brand h1{font:700 20px Georgia,serif;letter-spacing:1.2px;margin:5px 0}
+.eyebrow{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--muted);font-weight:700}
+.datebox{text-align:right;line-height:1.8}
+.datebox strong{display:block;font-size:14px}
+button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.layout{max-width:1600px;margin:auto;display:grid;
+  grid-template-columns:180px minmax(0,1fr) 240px;gap:20px;padding:23px}
+.sidebar{border-right:1px solid var(--border);padding-right:12px}
+.section-label,.panel-title{font-size:9px;font-weight:700;
+  letter-spacing:1.5px;color:var(--muted);margin:8px 0 13px}
+.nav{width:100%;display:block;text-align:left;padding:12px 10px;
+  background:transparent;color:#bcb4a6;border:1px solid transparent;
+  margin-bottom:4px}
+.nav:hover,.nav.active{background:#302a22;color:var(--cream);
+  border-color:#514538}
+.nav.active{border-left:3px solid var(--red)}
+.sidebar-note{margin-top:28px;padding:14px 8px;border-top:1px solid var(--border);
+  color:var(--muted);font-size:11px;line-height:1.8}
+.pagehead{display:flex;justify-content:space-between;align-items:center;
+  gap:12px;margin:4px 0 17px}
+.pagehead h2{font:600 28px Georgia,serif;margin:6px 0 0}
+.badge{border:1px solid #655236;color:var(--gold);padding:7px;
+  font-size:9px;letter-spacing:1px;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;margin-bottom:16px}
+.stat{padding:13px;background:var(--panel);border:1px solid var(--border)}
+.stat-name{font-size:10px;color:#c4bbaa;line-height:1.5}
+.stat-value{font:600 23px Georgia,serif;margin:7px 0 9px}
+.track{height:4px;background:#423e34;overflow:hidden}
+.fill{height:100%;transition:width .2s}
+.hero{position:relative;min-height:225px;display:flex;align-items:flex-end;
+  overflow:hidden;border:1px solid #66513a;
+  background:linear-gradient(0deg,#171612 0%,#171612dd 45%,#17161222 100%),
+  linear-gradient(115deg,#74614a,#3d3b32 52%,#785344)}
+.hero:after{content:"PERÚ";position:absolute;right:13px;top:15px;
+  color:#ffffff13;font:bold clamp(45px,8vw,94px) Georgia,serif}
+.hero-content{position:relative;z-index:1;padding:25px;max-width:630px}
+.hero h2{font:600 clamp(26px,3vw,37px) Georgia,serif;
+  line-height:1.2;margin:11px 0}
+.hero p{font-size:12px;line-height:1.8;color:#cfc4b1;margin:0}
+.event{background:var(--panel);border:1px solid var(--border);
+  border-top:0;padding:21px}
+.event-meta{display:flex;justify-content:space-between;gap:10px;
+  color:var(--muted);font-size:9px;letter-spacing:1.2px;margin-bottom:15px}
+.event h3{font:600 21px Georgia,serif;margin:0 0 12px}
+.description{font-size:12px;line-height:1.9;color:#c9c0b2}
+.warning{border-left:2px solid var(--gold);background:#2b2922;
+  padding:11px 13px;color:#cfc1a5;font-size:11px;line-height:1.8}
+.decision-title{border-top:1px solid var(--border);padding-top:16px;
+  margin:20px 0 12px;color:var(--muted);font-size:9px;
+  letter-spacing:1.5px;font-weight:bold}
+.choice{width:100%;display:flex;text-align:left;gap:12px;
+  align-items:flex-start;margin-bottom:8px;padding:14px;
+  background:var(--panel2);border:1px solid #4a4438;color:var(--cream)}
+.choice:hover:not(:disabled),.choice.selected{border-color:var(--gold);background:#332d22}
+.choice:disabled:not(.selected){opacity:.55;cursor:default}
+.letter{font:600 18px Georgia,serif;color:var(--gold)}
+.choice-content{flex:1}
+.choice-content strong{display:block;font-size:12px;margin-bottom:7px}
+.choice-content span{display:block;color:#c0b7a8;font-size:11px;line-height:1.7}
+.choice-content small{display:block;color:var(--gold);font-size:10px;margin-top:7px;line-height:1.6}
+.feedback{display:none;background:#2c2a22;border-left:3px solid var(--gold);
+  padding:13px;margin-top:15px;color:#d8c9ae;font-size:11px;line-height:1.8}
+.feedback.show{display:block}
+.actions{display:flex;gap:9px;margin-top:14px}
+.primary,.secondary{border:1px solid var(--border);padding:13px;
+  background:#343027;color:var(--cream);text-align:left}
+.primary{flex:1;background:var(--red);border-color:#bd655b;color:white;
+  font-weight:bold;letter-spacing:.7px}
+.primary:hover{background:#bb554b}
+.secondary:hover{border-color:var(--gold)}
+.overview{padding:16px;background:var(--panel);border:1px solid var(--border);
+  margin-bottom:18px}
+.overview h3{font:600 21px Georgia,serif;margin:10px 0 6px}
+.overview p{font-size:11px;color:var(--muted)}
+.rule{height:1px;background:var(--border);margin:14px 0}
+.overview-row{display:flex;justify-content:space-between;gap:8px;
+  margin:12px 0;font-size:10px;color:var(--muted)}
+.overview-row strong{color:var(--cream)}
+.log{padding:12px 0;border-bottom:1px solid var(--border)}
+.log strong{display:block;font-size:11px;margin-bottom:5px}
+.log span{font-size:10px;color:var(--muted);line-height:1.6}
+.note{padding:14px;background:#29261f;border:1px solid #574831;
+  color:#c9bda7;font-size:11px;line-height:1.8}
+footer{display:flex;justify-content:space-between;gap:12px;
+  padding:18px 25px;border-top:1px solid var(--border);
+  color:var(--muted);font-size:9px;letter-spacing:1px}
+.panel-page{padding:20px;background:var(--panel);border:1px solid var(--border)}
+.panel-page h3{font:600 22px Georgia,serif}
+.panel-page p{font-size:12px;line-height:1.9;color:#c7beaf}
+.hidden{display:none!important}
+@media(max-width:1100px){
+  .layout{grid-template-columns:150px minmax(0,1fr)}
+  .rightbar{grid-column:2}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:650px){
+  .topbar{padding:14px}.datebox{display:none}
+  .layout{display:flex;flex-direction:column;padding:12px;gap:15px}
+  .sidebar{border:0;padding:0;display:flex;flex-wrap:wrap;gap:4px}
+  .section-label,.sidebar-note{display:none}
+  .nav{width:auto;margin:0;padding:10px;font-size:11px}
+  .pagehead h2{font-size:24px}.hero{min-height:210px}
+  .event{padding:14px}.actions{flex-direction:column}
+  footer{flex-direction:column;padding:15px}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">A</div>
+    <div><div class="eyebrow">A Peruvian political strategy game</div>
+      <h1>THE DAWN OF APRA</h1></div>
+  </div>
+  <div class="datebox">
+    <div class="eyebrow">Government of Alan García</div>
+    <strong id="date">July 1985</strong>
+    <span id="turn">Campaign turn 1</span>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="section-label">GOVERNMENT</div>
+    <nav id="navigation"></nav>
+    <div class="sidebar-note">
+      YOUR MANDATE<br>
+      Govern wisely. Preserve democracy. Shape Peru's future.
+      <br><br>
+      <span id="save-status">Progress saves in this browser.</span>
+    </div>
+  </aside>
+
+  <main>
+    <div class="pagehead">
+      <div><div class="eyebrow">PALACIO DE GOBIERNO · LIMA</div>
+        <h2 id="section-heading">Presidency</h2></div>
+      <span class="badge" id="phase">FIRST TERM</span>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <section id="campaign">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="eyebrow" id="event-kicker">HISTORICAL BRIEFING</div>
+          <h2 id="hero-title">A New President,<br>An Uncertain Future</h2>
+          <p id="hero-description">Peru, July 1985. The promises of a new administration meet the realities of governing.</p>
+        </div>
+      </div>
+      <article class="event">
+        <div class="event-meta"><span id="event-category">GOVERNMENT AFFAIRS</span>
+          <span id="event-id">EVENT 001</span></div>
+        <h3 id="event-title">The García Government Takes Office</h3>
+        <p class="description" id="event-description"></p>
+        <div class="warning" id="historical-note"></div>
+        <div class="decision-title">YOUR DECISION</div>
+        <div id="choices"></div>
+        <div class="feedback" id="feedback" aria-live="polite"></div>
+        <div class="actions">
+          <button class="primary" id="advance">ADVANCE MONTH →</button>
+          <button class="secondary" id="save">SAVE</button>
+          <button class="secondary" id="load">LOAD</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="other-page" class="panel-page hidden"></section>
+    <section id="ending-page" class="panel-page hidden"></section>
+  </main>
+
+  <aside class="rightbar">
+    <div class="panel-title">NATIONAL OVERVIEW</div>
+    <section class="overview">
+      <div class="eyebrow">HEAD OF STATE</div>
+      <h3 id="head-name">Alan García</h3>
+      <p id="head-role">President of the Republic</p>
+      <div class="rule"></div>
+      <div class="overview-row"><span>Ruling party</span><strong>APRA</strong></div>
+      <div class="overview-row"><span>Capital</span><strong>Lima</strong></div>
+      <div class="overview-row"><span>Political system</span><strong id="system">Republic</strong></div>
+      <div class="overview-row"><span>Campaign ends</span><strong>April 1992</strong></div>
+    </section>
+    <div class="panel-title">RECENT DEVELOPMENTS</div>
+    <section id="history-log"></section>
+    <div class="note" style="margin-top:17px">
+      <div class="eyebrow">DEVELOPMENT NOTE</div>
+      This is the playable foundation. The complete researched monthly event calendar and all branching historical routes will be added in later updates.
+    </div>
+  </aside>
+</div>
+
+<footer><span>THE DAWN OF APRA</span>
+  <span>HISTORICAL STRATEGY · ALTERNATE HISTORY</span></footer>
+
+<script>
+const initialState = {
+  year:1985, month:7, turns:1, active:"Presidency",
+  chosen:false, selected:-1, ended:false, ending:null,
+  support:68, unity:76, legitimacy:72, economy:48,
+  stability:70, military:54, business:50, insurgency:45,
+  history:[], visited:{}
+};
+
+const sectionNames = ["Presidency","APRA","Economy","Congress",
+  "Security","Foreign Affairs","Elections","History"];
+
+const historicalEvents = {
+  "1985-7": {
+    id:"PER-001",category:"INAUGURATION",day:"28 JULY 1985",
+    title:"The García Government Takes Office",
+    hero:"A New President,<br>An Uncertain Future",
+    description:"Alan García assumes the presidency after APRA's electoral victory. His government promises a new economic direction while facing severe political violence and difficult relations with international creditors. The administration must turn its electoral mandate into a governing programme.",
+    note:"Historical basis: García took office on 28 July 1985. The opening choices and their numerical effects are fictional game mechanics.",
+    choices:[
+      {title:"Defend the foreign-debt payment ceiling",text:"Make economic independence the defining commitment of the government.",effects:"Support +4 · Creditor confidence −6",change:{support:4,business:-6,economy:-2}},
+      {title:"Build a civilian peace initiative",text:"Prioritise political dialogue, accountability and civilian oversight.",effects:"Legitimacy +4 · Military confidence −3",change:{legitimacy:4,military:-3,insurgency:-2}},
+      {title:"Consult the APRA leadership",text:"Build agreement within the governing party before setting priorities.",effects:"Party unity +5 · Support +1",change:{unity:5,support:1,stability:2}}
+    ]
+  },
+  "1985-8": {
+    id:"PER-002",category:"HUMAN RIGHTS",day:"14 AUGUST 1985",
+    title:"The Accomarca Massacre",
+    hero:"The State Under<br>Scrutiny",
+    description:"Soldiers kill civilians in Accomarca, Ayacucho. The incident presents the new government with an early test of military accountability, civilian authority and its response to the wider armed conflict.",
+    note:"Historical event. The choices represent hypothetical government responses; their outcomes are alternate-history possibilities.",
+    choices:[
+      {title:"Order an independent investigation",text:"Demand a transparent inquiry and accountability for those responsible.",effects:"Legitimacy +6 · Military confidence −5",change:{legitimacy:6,military:-5,stability:-1}},
+      {title:"Protect the military command",text:"Prioritise security-force cohesion and avoid a public confrontation.",effects:"Military confidence +4 · Legitimacy −6",change:{military:4,legitimacy:-6,stability:1}},
+      {title:"Create civilian oversight procedures",text:"Establish reporting and review requirements for security operations.",effects:"Legitimacy +3 · Stability +2",change:{legitimacy:3,stability:2,unity:-1}}
+    ]
+  },
+  "1986-6": {
+    id:"PER-003",category:"SECURITY & JUSTICE",day:"18–19 JUNE 1986",
+    title:"The Prison Massacres",
+    hero:"Order, Justice<br>and the Republic",
+    description:"Prison uprisings and the security-force response at El Frontón, Lurigancho and Santa Bárbara result in large numbers of deaths. The government's response tests the limits of military autonomy and the state's obligation to uphold human rights.",
+    note:"Historical event. The game must treat deaths and abuses seriously, not as a cost-free tactical bonus.",
+    choices:[
+      {title:"Demand a full judicial inquiry",text:"Pursue accountability even if relations with security commanders deteriorate.",effects:"Legitimacy +7 · Military confidence −7",change:{legitimacy:7,military:-7,stability:-2}},
+      {title:"Support the security command",text:"Defend the operation publicly and prioritise institutional cohesion.",effects:"Military confidence +4 · Legitimacy −8",change:{military:4,legitimacy:-8,insurgency:1}},
+      {title:"Seek a cross-party accountability agreement",text:"Work with Congress on oversight and due-process safeguards.",effects:"Legitimacy +4 · Party unity +1",change:{legitimacy:4,unity:1,stability:2}}
+    ]
+  },
+  "1987-7": {
+    id:"PER-004",category:"ECONOMIC POLICY",day:"28 JULY 1987",
+    title:"The Banking Nationalisation Proposal",
+    hero:"The Struggle for<br>Economic Power",
+    description:"García announces a proposal to nationalise private banks. The initiative creates a major confrontation over economic power, private property, the role of the state and the government's future direction.",
+    note:"Historical event. The consequences shown below depend on the player's alternate-history decisions.",
+    choices:[
+      {title:"Push ahead with nationalisation",text:"Commit to expanding state control over the banking system.",effects:"Support +4 · Business confidence −8",change:{support:4,business:-8,unity:2,economy:-2}},
+      {title:"Negotiate a narrower reform",text:"Seek a compromise that preserves some private-sector role.",effects:"Business confidence +3 · Party unity −2",change:{business:3,unity:-2,stability:2}},
+      {title:"Withdraw the proposal",text:"Avoid a prolonged confrontation and seek alternative reforms.",effects:"Business confidence +4 · Support −5",change:{business:4,support:-5,unity:-3}}
+    ]
+  },
+  "1988-5": {
+    id:"PER-005",category:"HUMAN RIGHTS",day:"14 MAY 1988",
+    title:"The Cayara Massacre",
+    hero:"Accountability<br>Under Pressure",
+    description:"Civilians are killed in Cayara, Ayacucho, amid the armed conflict. Allegations and subsequent investigations become a severe test of the government's handling of human-rights abuses and its relationship with the armed forces.",
+    note:"Historical event. Player choices alter the hypothetical political consequences, not the historical record.",
+    choices:[
+      {title:"Protect the independence of investigators",text:"Allow investigators to pursue evidence without political interference.",effects:"Legitimacy +5 · Military confidence −4",change:{legitimacy:5,military:-4,stability:-1}},
+      {title:"Refer the issue to a congressional inquiry",text:"Seek institutional scrutiny through parliamentary oversight.",effects:"Legitimacy +3 · Party unity −1",change:{legitimacy:3,unity:-1,stability:1}},
+      {title:"Defend the government against criticism",text:"Prioritise political survival and resist outside pressure.",effects:"Support −3 · Legitimacy −5",change:{support:-3,legitimacy:-5,unity:1}}
+    ]
+  },
+  "1990-4": {
+    id:"PER-006",category:"GENERAL ELECTION",day:"8 APRIL 1990",
+    title:"The First Round of the General Election",
+    hero:"The Electoral<br>Verdict",
+    description:"Peru votes in the first round of the 1990 general election. APRA must face public judgement on its record in government, its economic policy and the political violence that has continued through the decade.",
+    note:"Historical election date. This prototype does not yet simulate the detailed regional vote or congressional seat allocation.",
+    choices:[
+      {title:"Defend APRA's record",text:"Campaign on the party's original promises and social programme.",effects:"Support +3 · Business confidence −2",change:{support:3,business:-2}},
+      {title:"Admit failures and propose reform",text:"Acknowledge the crisis and promise a revised programme.",effects:"Legitimacy +2 · Support −1",change:{legitimacy:2,support:-1,stability:1}},
+      {title:"Prioritise party renewal",text:"Begin reorganising APRA for the political challenges ahead.",effects:"Party unity +3 · Support −2",change:{unity:3,support:-2}}
+    ]
+  },
+  "1990-6": {
+    id:"PER-007",category:"PRESIDENTIAL ELECTION",day:"10 JUNE 1990",
+    title:"The Presidential Runoff",
+    hero:"A Turning Point<br>for APRA",
+    description:"Peru holds the second round of its presidential election. In the historical timeline Alberto Fujimori defeats Mario Vargas Llosa. APRA's future now depends on how it handles defeat, opposition politics and internal reform.",
+    note:"Historical election result. In this campaign, APRA's own political condition and response are shaped by your earlier choices.",
+    choices:[
+      {title:"Prepare for democratic opposition",text:"Defend constitutional government and rebuild party organisation.",effects:"Legitimacy +4 · Unity +3",change:{legitimacy:4,unity:3,stability:2}},
+      {title:"Pursue a broad opposition coalition",text:"Work with other parties to defend institutional checks and balances.",effects:"Stability +4 · Unity −2",change:{stability:4,unity:-2,legitimacy:2}},
+      {title:"Focus on party survival first",text:"Concentrate resources on restoring APRA's organisation.",effects:"Unity +4 · Legitimacy −1",change:{unity:4,legitimacy:-1,support:1}}
+    ]
+  },
+  "1992-4": {
+    id:"PER-008",category:"CONSTITUTIONAL CRISIS",day:"5 APRIL 1992",
+    title:"Fujimori's Self-Coup",
+    hero:"Democracy at<br>the Brink",
+    description:"President Alberto Fujimori dissolves Congress and intervenes in the judiciary, breaking the constitutional order. APRA must decide how to respond to the authoritarian rupture and defend political institutions.",
+    note:"Historical event. The final campaign outcome will depend on earlier decisions and the choices made in this crisis.",
+    choices:[
+      {title:"Lead constitutional resistance",text:"Coordinate democratic opposition and defend the restoration of constitutional government.",effects:"Legitimacy +6 · Stability −3",change:{legitimacy:6,stability:-3,unity:3}},
+      {title:"Seek a negotiated institutional settlement",text:"Explore a political agreement while insisting on a return to constitutional rule.",effects:"Stability +3 · Unity −1",change:{stability:3,unity:-1,legitimacy:2}},
+      {title:"Prioritise the party's immediate survival",text:"Protect APRA's organisation and leadership amid political uncertainty.",effects:"Unity +2 · Legitimacy −4",change:{unity:2,legitimacy:-4,support:-1}}
+    ]
+  }
+};
+
+function defaultState(){return JSON.parse(JSON.stringify(initialState))}
+let state = defaultState();
+try {
+  const stored = localStorage.getItem("dawnOfApraSave");
+  if(stored){const parsed=JSON.parse(stored);state={...defaultState(),...parsed};}
+} catch(e) { /* Use a new game if local storage is unavailable. */ }
+
+function clamp(n){return Math.max(0,Math.min(100,n))}
+function dateKey(){return state.year+"-"+state.month}
+function monthName(y,m){return new Date(y,m-1,1).toLocaleDateString("en-US",{month:"long",year:"numeric"})}
+function currentEvent(){
+  return historicalEvents[dateKey()] || {
+    id:"BRIEFING-"+dateKey(),category:"MONTHLY GOVERNMENT BRIEFING",
+    day:monthName(state.year,state.month).toUpperCase(),
+    title:"The Work of Government Continues",
+    hero:"A Country at<br>a Crossroads",
+    description:"The administration continues to confront economic pressure, party disagreements and the conflict affecting Peru. This month's verified historical event has not yet been added to the campaign calendar. For now, you can make a general government decision while the researched monthly record is developed.",
+    note:"Calendar placeholder: this is not a claim that a specific historical event occurred this month. The final campaign will have a sourced historical event for every monthly turn.",
+    choices:[
+      {title:"Consult the party and cabinet",text:"Seek agreement before committing to a new direction.",effects:"Party unity +2 · Stability +1",change:{unity:2,stability:1}},
+      {title:"Prioritise economic management",text:"Direct attention towards prices, public finances and living standards.",effects:"Economic capacity +2 · Support +1",change:{economy:2,support:1}},
+      {title:"Strengthen democratic oversight",text:"Reinforce accountability and civilian control of the state.",effects:"Legitimacy +2 · Stability +1",change:{legitimacy:2,stability:1}}
+    ]
+  };
+}
+
+function saveGame(showMessage=true){
+  try {
+    localStorage.setItem("dawnOfApraSave",JSON.stringify(state));
+    document.getElementById("save-status").textContent="Saved in this browser.";
+    if(showMessage) alert("Campaign saved in this browser.");
+  } catch(e) { if(showMessage) alert("Save failed. Your browser may block local storage."); }
+}
+function loadGame(){
+  try{
+    const s=localStorage.getItem("dawnOfApraSave");
+    if(!s){alert("No saved campaign found in this browser.");return;}
+    state={...defaultState(),...JSON.parse(s)};
+    render();
+    alert("Campaign loaded.");
+  }catch(e){alert("The saved campaign could not be loaded.");}
+}
+function applyChoice(index){
+  if(state.chosen || state.ended)return;
+  const ev=currentEvent(), c=ev.choices[index];
+  if(!c)return;
+  state.selected=index;
+  state.chosen=true;
+  for(const [key,value] of Object.entries(c.change||{})){
+    if(typeof state[key]==="number")state[key]=clamp(state[key]+value);
+  }
+  state.history.unshift({date:monthName(state.year,state.month),title:c.title,event:ev.title});
+  state.history=state.history.slice(0,12);
+  state.visited[dateKey()]=true;
+  saveGame(false);
+  render();
+  const fb=document.getElementById("feedback");
+  fb.classList.add("show");
+  fb.textContent="Decision recorded: "+c.title+". Your choices and their effects have been saved in this browser.";
+}
+function endCampaign(){
+  state.ended=true;
+  if(state.legitimacy<35 || state.stability<25){
+    state.ending={title:"The Republic in Crisis",text:"Institutional legitimacy and government stability have collapsed. Your administration leaves a country facing a profound constitutional crisis."};
+  }else if(state.unity<35){
+    state.ending={title:"The Broken Party",text:"APRA's internal divisions overwhelm its ability to act as a united political force. Its future depends on rebuilding the movement."};
+  }else if(state.legitimacy>=60 && state.stability>=55){
+    state.ending={title:"The Democratic Resistance",text:"Despite immense pressure, democratic institutions and constitutional opposition remain viable. APRA survives as a major participant in Peru's political future."};
+  }else if(state.support>=65 && state.unity>=60){
+    state.ending={title:"The Aprista Renewal",text:"APRA maintains a strong social base and a degree of internal unity. The party has a chance to renew itself and contest Peru's future democratically."};
+  }else if(state.economy>=60){
+    state.ending={title:"A Difficult Stabilisation",text:"Economic capacity has improved, but the government's legacy remains contested. The long-term success of stabilisation depends on the political settlement that follows."};
+  }else{
+    state.ending={title:"An Uncertain Legacy",text:"The administration reaches the end of the campaign without resolving every crisis. APRA must confront the consequences of its decisions and decide what kind of movement it will become."};
+  }
+  saveGame(false);render();
+}
+function advanceMonth(){
+  if(state.ended)return;
+  if(!state.chosen){
+    const ok=confirm("You have not chosen a response to this month's event. Advance anyway?");
+    if(!ok)return;
+  }
+  if(state.year===1992&&state.month===4){endCampaign();return;}
+  state.month++;
+  if(state.month>12){state.month=1;state.year++;}
+  state.turns++;
+  state.chosen=false;state.selected=-1;
+  saveGame(false);render();
+}
+function renderStats(){
+  const items=[
+    ["Popular support",state.support,"#b95750"],
+    ["Party unity",state.unity,"#c0a067"],
+    ["Democratic legitimacy",state.legitimacy,"#829778"],
+    ["Economic capacity",state.economy,"#8293a0"]
+  ];
+  document.getElementById("stats").innerHTML=items.map(([name,value,color])=>`
+    <div class="stat"><div class="stat-name">${name}</div>
+    <div class="stat-value">${value}%</div>
+    <div class="track"><div class="fill" style="width:${value}%;background:${color}"></div></div></div>
+  `).join("");
+}
+function renderNavigation(){
+  document.getElementById("navigation").innerHTML=sectionNames.map(name=>`
+    <button class="nav ${state.active===name?"active":""}" data-nav="${name}">${name}</button>
+  `).join("");
+  document.querySelectorAll("[data-nav]").forEach(b=>b.addEventListener("click",()=>{
+    state.active=b.dataset.nav;render();
+  }));
+}
+function renderOtherPage(){
+  const pages={
+    "APRA": ["APRA and Party Affairs","Manage party unity, leadership relations and the political base.",
+      [["Party unity",state.unity],["Popular support",state.support]]],
+    "Economy": ["The Peruvian Economy","Economic capacity represents the government's room to respond to fiscal, price and production pressures. This indicator is a game abstraction, not a historical economic statistic.",
+      [["Economic capacity",state.economy],["Business confidence",state.business]]],
+    "Congress": ["Congress and Political Alliances","Legislative negotiation and alliances will become a deeper system in a later update. For now, use your decisions to maintain legitimacy and political stability.",
+      [["Democratic legitimacy",state.legitimacy],["Government stability",state.stability]]],
+    "Security": ["Security and Civilian Authority","Manage political violence, military confidence and the state's obligation to protect civilians and uphold accountability.",
+      [["Insurgency pressure",state.insurgency],["Military confidence",state.military]]],
+    "Foreign Affairs": ["Peru and the International Community","Relations with creditors, neighbouring countries and international institutions affect the government's available choices.",
+      [["Business confidence",state.business],["Economic capacity",state.economy]]],
+    "Elections": ["Elections and Public Opinion","Election outcomes will be expanded to include campaigns, coalitions, regional voting, seat allocation and changing public support.",
+      [["Popular support",state.support],["Party unity",state.unity]]],
+    "History": ["Campaign History","Your decisions are recorded here. The historical event calendar is being expanded month by month; placeholder briefings are explicitly identified.",
+      null]
+  };
+  const page=pages[state.active];if(!page)return false;
+  document.getElementById("campaign").classList.add("hidden");
+  const el=document.getElementById("other-page");el.classList.remove("hidden");
+  if(state.active==="History"){
+    el.innerHTML="<h3>"+page[0]+"</h3><p>"+page[1]+"</p>"+
+      (state.history.length?state.history.map(h=>`<div class="log"><strong>${h.date}: ${h.event}</strong><p>${h.title}</p></div>`).join(""):"<p>No decisions have been recorded yet.</p>");
+  }else{
+    el.innerHTML="<h3>"+page[0]+"</h3><p>"+page[1]+"</p>"+
+      page[2].map(([n,v])=>`<div class="stat"><div class="stat-name">${n}</div><div class="stat-value">${v}%</div><div class="track"><div class="fill" style="width:${v}%;background:#c0a067"></div></div></div>`).join("");
+  }
+  return true;
+}
+function renderLog(){
+  const items=state.history.slice(0,4);
+  document.getElementById("history-log").innerHTML=items.length?items.map(h=>`
+    <div class="log"><strong>${h.date}</strong><span>${h.title}</span></div>
+  `).join(""):'<p style="color:var(--muted);font-size:11px;line-height:1.7">No decisions recorded yet.</p>';
+}
+function render(){
+  renderNavigation();renderStats();
+  document.getElementById("date").textContent=monthName(state.year,state.month);
+  document.getElementById("turn").textContent="Campaign turn "+state.turns+" of 82";
+  document.getElementById("phase").textContent=state.year<1990?"FIRST TERM":state.year<1992?"APRA IN OPPOSITION":"CONSTITUTIONAL CRISIS";
+  document.getElementById("save-status").textContent="Progress saves in this browser.";
+  document.getElementById("head-name").textContent=state.year<1990?"Alan García":"Alan García / APRA leadership";
+  document.getElementById("head-role").textContent=state.year<1990?"President of the Republic":"APRA and the opposition";
+  document.getElementById("system").textContent=state.legitimacy<30?"Severe crisis":"Republic";
+  document.getElementById("other-page").classList.add("hidden");
+  document.getElementById("ending-page").classList.add("hidden");
+  if(state.ended){
+    document.getElementById("campaign").classList.add("hidden");
+    const end=document.getElementById("ending-page");end.classList.remove("hidden");
+    end.innerHTML='<div class="eyebrow">CAMPAIGN COMPLETE · APRIL 1992</div><h3>'+state.ending.title+'</h3><p>'+state.ending.text+'</p><div class="rule"></div><p>Final indicators: Popular support '+state.support+'%; party unity '+state.unity+'%; legitimacy '+state.legitimacy+'%; economic capacity '+state.economy+'%.</p><button class="primary" id="restart">START A NEW CAMPAIGN</button>';
+    document.getElementById("restart").addEventListener("click",()=>{
+      if(confirm("Start a new campaign? This replaces the current campaign in memory.")){
+        state=defaultState();saveGame(false);render();
+      }
+    });
+    document.getElementById("section-heading").textContent="Campaign complete";
+    document.getElementById("event-kicker").textContent="CAMPAIGN COMPLETE";
+    document.getElementById("event-title").textContent=state.ending.title;
+    document.getElementById("advance").textContent="CAMPAIGN COMPLETE";
+    return;
+  }
+  document.getElementById("section-heading").textContent=state.active;
+  if(state.active!=="Presidency"&&renderOtherPage()){
+    document.getElementById("advance").textContent="ADVANCE MONTH →";
+    return;
+  }
+  document.getElementById("campaign").classList.remove("hidden");
+  const ev=currentEvent();
+  document.getElementById("event-kicker").textContent=ev.category;
+  document.getElementById("event-category").textContent=ev.day;
+  document.getElementById("event-id").textContent=ev.id;
+  document.getElementById("hero-title").innerHTML=ev.hero;
+  document.getElementById("hero-description").textContent=ev.title;
+  document.getElementById("event-title").textContent=ev.title;
+  document.getElementById("event-description").textContent=ev.description;
+  document.getElementById("historical-note").textContent=ev.note;
+  document.getElementById("choices").innerHTML=ev.choices.map((c,i)=>`
+    <button class="choice ${state.selected===i?"selected":""}" data-choice="${i}" ${state.chosen?"disabled":""}>
+      <span class="letter">${String.fromCharCode(65+i)}</span>
+      <span class="choice-content"><strong>${c.title}</strong><span>${c.text}</span><small>${c.effects}</small></span>
+    </button>
+  `).join("");
+  document.querySelectorAll("[data-choice]").forEach(b=>b.addEventListener("click",()=>applyChoice(Number(b.dataset.choice))));
+  const feedback=document.getElementById("feedback");
+  feedback.classList.toggle("show",state.chosen);
+  feedback.textContent=state.chosen?"Decision recorded. Its effects will influence later events and your final outcome.":"";
+  document.getElementById("advance").textContent=state.year===1992&&state.month===4?"CONCLUDE CAMPAIGN →":"ADVANCE MONTH →";
+  document.getElementById("advance").disabled=state.ended;
+  renderLog();
+}
+document.getElementById("advance").addEventListener("click",advanceMonth);
+document.getElementById("save").addEventListener("click",()=>saveGame(true));
+document.getElementById("load").addEventListener("click",loadGame);
+render();
+</script>
+</body>
+</html>
