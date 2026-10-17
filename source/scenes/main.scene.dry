@@ -1,0 +1,47 @@
+
+title: Presidential Desk
+is-hand: true
+max-cards: 3
+
+= [+ month_name +] [+ year +]
+
+The Presidential Palace, Lima.
+
+Review the government's affairs, draw policy cards, manage APRA's internal politics and decide how to respond to the challenges facing Peru.
+
+Public support: [+ support +]
+Party unity: [+ party_unity +]
+Democratic legitimacy: [+ legitimacy +]
+
+- @party
+- @government
+- @next_month
+
+@party
+title: APRA and Party Affairs
+is-deck: true
+
+- #apra_party_affairs
+
+@government
+title: Presidency and Government Affairs
+is-deck: true
+
+- #apra_govt_affairs
+
+@next_month
+title: Next Month
+is-pinned-card: true
+on-arrival: {!
+Q.time += 1;
+Q.month += 1;
+if (Q.month > 12) {
+    Q.month = 1;
+    Q.year += 1;
+}
+Q.month_name = Q.month_names[Q.month - 1];
+Q.party_card_available = 1;
+Q.govt_card_available = 1;
+Q.decisions_this_month = 0;
+!}
+go-to: main
