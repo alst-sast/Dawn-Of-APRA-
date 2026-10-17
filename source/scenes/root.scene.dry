@@ -1,0 +1,43 @@
+
+title: Root Scene
+new-page: true
+go-to: start_menu
+
+@start_menu
+title: The Dawn of APRA
+new-page: true
+
+= THE DAWN OF APRA
+= Peru, 1985–1992
+
+A political strategy game about the APRA government, economic crisis, party politics, insurgency and the survival of Peruvian democracy.
+
+You will guide the government from Alan García's inauguration through a decade of escalating political and economic pressure.
+
+Every decision can change the course of the campaign.
+
+- @start: Begin the campaign
+
+@start
+title: Begin Campaign
+on-arrival: {!
+Q.started = 1;
+Q.time = 1;
+Q.year = 1985;
+Q.month = 7;
+Q.month_names = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+Q.month_name = 'July';
+
+Q.support = 68;
+Q.party_unity = 76;
+Q.legitimacy = 72;
+Q.economic_capacity = 45;
+Q.military_confidence = 54;
+Q.business_confidence = 50;
+Q.insurgency_pressure = 45;
+
+Q.party_card_available = 1;
+Q.govt_card_available = 1;
+Q.decisions_this_month = 0;
+!}
+go-to: main
