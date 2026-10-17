@@ -2,7 +2,6 @@
   "name": "the-dawn-of-apra",
   "version": "1.0.0",
   "private": true,
-  "description": "A Fictional political strategy game set in Peru from 1985 to 1992",
   "scripts": {
     "build": "dendrynexus make-html --force --pretty"
   },
