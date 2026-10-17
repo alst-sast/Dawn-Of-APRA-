@@ -1,7 +1,7 @@
 title: The García Government Takes Office
 is-card: true
 tags: apra_govt_affairs
-view-if: time = 1 and govt_card_available = 1
+view-if: year = 1985 and month = 7 and govt_card_available = 1
 max-visits: 1
 
 = A New President, An Uncertain Future
@@ -28,9 +28,7 @@ Q.govt_card_available = 0;
 
 You make economic independence the defining commitment of the administration. The decision energises some supporters but risks worsening relations with creditors.
 
-These numerical effects represent the game's hypothetical consequences.
-
-- @return: Return to the presidential desk
+- @.main: Return to the presidential desk
 
 @apra_peace_commission
 title: Establish a Civilian Peace Initiative
@@ -42,7 +40,7 @@ Q.govt_card_available = 0;
 
 You prioritise civilian oversight and dialogue in responding to Peru's political violence. This may strengthen institutional credibility while creating friction with security officials.
 
-- @main: Return to the presidential desk
+- @.main: Return to the presidential desk
 
 @apra_cabinet_consultation
 title: Consult APRA's Leadership
