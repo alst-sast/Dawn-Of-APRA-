@@ -26,7 +26,9 @@ is-deck: true
 title: Presidency and Government Affairs
 is-deck: true
 
-- #apra_govt_affairs
+- @garcia_inauguration
+- @accomarca
+- @monthly_briefing
 
 @next_month
 title: Next Month
