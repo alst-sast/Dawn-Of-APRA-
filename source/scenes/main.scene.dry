@@ -6,7 +6,7 @@ max-cards: 3
 
 The Presidential Palace, Lima.
 
-The government faces a demanding political situation. Manage APRA's internal affairs, review government policy, and prepare for the challenges confronting Peru.
+Review the government's affairs, manage APRA's internal politics and decide how to respond to the challenges facing Peru.
 
 Public support: [+ support +]
 
@@ -22,12 +22,12 @@ Democratic legitimacy: [+ legitimacy +]
 title: APRA and Party Affairs
 is-deck: true
 
-- @apra_party_unity: Holding APRA Together
+- @.apra_party_unity: Holding APRA Together
 
 @government
 title: Presidency and Government Affairs
 is-deck: true
 
-- @garcia_inauguration: The García Government Takes Office
-- @accomarca: The Accomarca Massacre
-- @monthly_briefing: Cabinet Briefing
+- @.garcia_inauguration: The García Government Takes Office
+- @.accomarca: The Accomarca Massacre
+- @.monthly_briefing: Cabinet Briefing
