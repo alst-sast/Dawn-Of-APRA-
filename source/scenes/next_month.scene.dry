@@ -1,6 +1,6 @@
 title: Next Month
 is-pinned-card: true
-
+go-to: main
 on-arrival: {!
 Q.time += 1;
 Q.month += 1;
@@ -15,5 +15,3 @@ Q.party_card_available = 1;
 Q.govt_card_available = 1;
 Q.decisions_this_month = 0;
 !}
-
-go-to: main
