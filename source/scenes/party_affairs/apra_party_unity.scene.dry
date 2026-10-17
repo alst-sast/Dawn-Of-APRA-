@@ -1,0 +1,39 @@
+
+title: Holding APRA Together
+is-card: true
+tags: apra_party_affairs
+view-if: party_card_available = 1
+
+= One Party, Many Ambitions
+
+APRA has returned to government, but winning an election does not guarantee internal unity.
+
+Party organisers, labour supporters, parliamentary representatives and the president's advisers may disagree about appointments, economic policy and the direction of the administration.
+
+The president must manage these competing interests while maintaining a workable governing party.
+
+- @apra_unity_meeting: Convene the party leadership.
+- @apra_unity_compromise: Negotiate a shared programme.
+
+@apra_unity_meeting
+title: Convene the Party Leadership
+on-arrival: {!
+Q.party_unity = Math.min(100, Q.party_unity + 3);
+Q.party_card_available = 0;
+!}
+
+You bring the leadership together to discuss the government's priorities. The meeting provides an opportunity to build cooperation within APRA.
+
+- @main: Return to the presidential desk
+
+@apra_unity_compromise
+title: Negotiate a Shared Programme
+on-arrival: {!
+Q.party_unity = Math.min(100, Q.party_unity + 1);
+Q.support = Math.min(100, Q.support + 2);
+Q.party_card_available = 0;
+!}
+
+You seek agreement between competing party interests. The compromise helps preserve unity, although the underlying disagreements have not disappeared.
+
+- @main: Return to the presidential desk
