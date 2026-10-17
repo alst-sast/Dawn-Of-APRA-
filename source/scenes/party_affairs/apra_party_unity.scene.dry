@@ -23,7 +23,7 @@ Q.party_card_available = 0;
 
 You bring the leadership together to discuss the government's priorities. The meeting provides an opportunity to build cooperation within APRA.
 
-- @return: Return to the presidential desk
+- @.main: Return to the presidential desk
 
 @apra_unity_compromise
 title: Negotiate a Shared Programme
