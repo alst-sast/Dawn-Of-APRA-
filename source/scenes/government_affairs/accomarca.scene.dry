@@ -1,4 +1,3 @@
-
 title: The Accomarca Massacre
 is-card: true
 tags: apra_govt_affairs
@@ -11,7 +10,7 @@ max-visits: 1
 
 Soldiers killed civilians in Accomarca during the internal armed conflict. The incident becomes an early test of the new administration's ability to hold security forces accountable.
 
-The Historical Truth and Reconciliation Commission later documented the massacre as part of its investigation into Peru's political violence.
+The Peruvian Truth and Reconciliation Commission later documented the massacre as part of its investigation into political violence.
 
 Your government must decide how to respond.
 
@@ -26,9 +25,9 @@ Q.military_confidence = Math.max(0, Q.military_confidence - 4);
 Q.govt_card_available = 0;
 !}
 
-You demand an investigation and insist that civilian authorities must be able to examine allegations of wrongdoing. This strengthens the government's accountability commitments but risks conflict with the military command.
+You demand an investigation and insist that civilian authorities must be able to examine allegations of wrongdoing.
 
-- @main: Return to the presidential desk
+- @.main: Return to the presidential desk
 
 @apra_accomarca_command
 title: Protect the Military Command
