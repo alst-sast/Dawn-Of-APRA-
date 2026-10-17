@@ -6,7 +6,7 @@ max-cards: 3
 
 The Presidential Palace, Lima.
 
-Review government affairs, manage APRA's internal politics and decide how to respond to the challenges facing Peru.
+The government faces a demanding political situation. Manage APRA's internal affairs, review government policy, and prepare for the challenges confronting Peru.
 
 Public support: [+ support +]
 
@@ -14,8 +14,8 @@ Party unity: [+ party_unity +]
 
 Democratic legitimacy: [+ legitimacy +]
 
-- @party
-- @government
+- @party: APRA and Party Affairs
+- @government: Presidency and Government Affairs
 - @next_month: Advance to Next Month
 
 @party
