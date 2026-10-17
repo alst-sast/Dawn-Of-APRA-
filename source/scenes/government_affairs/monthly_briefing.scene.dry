@@ -9,7 +9,7 @@ view-if: time > 2 and govt_card_available = 1
 
 The cabinet must coordinate its priorities as economic pressure, party disagreements and security challenges compete for attention.
 
-This is a temporary development card. It will be replaced by a researched historical event for this month before the full campaign is complete.
+This is a temporary development card. It will be replaced by a researched historical event for this month.
 
 - @apra_cabinet_economy: Prioritise economic management.
 - @apra_cabinet_unity: Seek a political compromise.
@@ -22,9 +22,9 @@ Q.support = Math.min(100, Q.support + 1);
 Q.govt_card_available = 0;
 !}
 
-The cabinet directs its attention towards prices, production and public finances. The decision offers a limited opportunity to improve the government's economic position.
+The cabinet directs its attention towards prices, production and public finances.
 
-- @return: Return to the presidential desk
+- @.main: Return to the presidential desk
 
 @apra_cabinet_unity
 title: Seek a Political Compromise
