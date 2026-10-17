@@ -22,13 +22,15 @@ is-deck: true
 
 - @apra_party_unity: Holding APRA Together
 
+
 @government
 title: Presidency and Government Affairs
 is-deck: true
 
-- @garcia_inauguration
-- @accomarca
-- @monthly_briefing
+- @garcia_inauguration: The García Government Takes Office
+- @accomarca: The Accomarca Massacre
+- @monthly_briefing: Cabinet Briefing
+
 
 @next_month
 title: Next Month
