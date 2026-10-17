@@ -1,4 +1,3 @@
-
 title: Holding APRA Together
 is-card: true
 tags: apra_party_affairs
@@ -24,7 +23,7 @@ Q.party_card_available = 0;
 
 You bring the leadership together to discuss the government's priorities. The meeting provides an opportunity to build cooperation within APRA.
 
-- @main: Return to the presidential desk
+- @return: Return to the presidential desk
 
 @apra_unity_compromise
 title: Negotiate a Shared Programme
