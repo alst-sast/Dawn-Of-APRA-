@@ -1,4 +1,3 @@
-
 title: Presidential Desk
 is-hand: true
 max-cards: 3
@@ -21,7 +20,7 @@ Democratic legitimacy: [+ legitimacy +]
 title: APRA and Party Affairs
 is-deck: true
 
-- #apra_party_affairs
+- @apra_party_unity
 
 @government
 title: Presidency and Government Affairs
