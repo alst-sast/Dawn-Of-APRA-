@@ -54,4 +54,4 @@ Q.govt_card_available = 0;
 
 You consult party leaders before committing the government to its full programme. Cooperation improves, although disagreements over economic and security policy remain.
 
-- @main: Return to the presidential desk
+- @.main: Return to the presidential desk
