@@ -1,4 +1,3 @@
-
 title: The García Government Takes Office
 is-card: true
 tags: apra_govt_affairs
@@ -31,7 +30,7 @@ You make economic independence the defining commitment of the administration. Th
 
 These numerical effects represent the game's hypothetical consequences.
 
-- @main: Return to the presidential desk
+- @return: Return to the presidential desk
 
 @apra_peace_commission
 title: Establish a Civilian Peace Initiative
