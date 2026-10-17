@@ -1,0 +1,43 @@
+
+title: The Accomarca Massacre
+is-card: true
+tags: apra_govt_affairs
+view-if: time = 2 and govt_card_available = 1
+max-visits: 1
+
+= Accountability and the Armed Forces
+
+**14 August 1985 — Accomarca, Ayacucho**
+
+Soldiers killed civilians in Accomarca during the internal armed conflict. The incident becomes an early test of the new administration's ability to hold security forces accountable.
+
+The Historical Truth and Reconciliation Commission later documented the massacre as part of its investigation into Peru's political violence.
+
+Your government must decide how to respond.
+
+- @apra_accomarca_investigation: Order an independent investigation.
+- @apra_accomarca_command: Protect the military command.
+
+@apra_accomarca_investigation
+title: Order an Independent Investigation
+on-arrival: {!
+Q.legitimacy = Math.min(100, Q.legitimacy + 5);
+Q.military_confidence = Math.max(0, Q.military_confidence - 4);
+Q.govt_card_available = 0;
+!}
+
+You demand an investigation and insist that civilian authorities must be able to examine allegations of wrongdoing. This strengthens the government's accountability commitments but risks conflict with the military command.
+
+- @main: Return to the presidential desk
+
+@apra_accomarca_command
+title: Protect the Military Command
+on-arrival: {!
+Q.military_confidence = Math.min(100, Q.military_confidence + 3);
+Q.legitimacy = Math.max(0, Q.legitimacy - 5);
+Q.govt_card_available = 0;
+!}
+
+You prioritise unity within the security establishment. The decision may reduce immediate friction with military leaders, but it damages the government's credibility on accountability.
+
+- @main: Return to the presidential desk
