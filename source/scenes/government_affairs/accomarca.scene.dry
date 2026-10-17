@@ -2,7 +2,7 @@
 title: The Accomarca Massacre
 is-card: true
 tags: apra_govt_affairs
-view-if: time = 2 and govt_card_available = 1
+view-if: year = 1985 and month = 8 and govt_card_available = 1
 max-visits: 1
 
 = Accountability and the Armed Forces
