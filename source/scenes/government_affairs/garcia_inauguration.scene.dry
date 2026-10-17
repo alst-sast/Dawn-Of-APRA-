@@ -1,0 +1,58 @@
+
+title: The García Government Takes Office
+is-card: true
+tags: apra_govt_affairs
+view-if: time = 1 and govt_card_available = 1
+max-visits: 1
+
+= A New President, An Uncertain Future
+
+**28 July 1985 — Lima**
+
+Alan García assumes the presidency of Peru following APRA's electoral victory.
+
+The new government promises economic reform and greater national independence. It must also confront political violence and determine how civilian institutions will oversee the security forces.
+
+Three priorities compete for the president's attention. Which direction will define the opening of the administration?
+
+- @apra_debt_ceiling: Enforce the foreign-debt payment ceiling.
+- @apra_peace_commission: Establish a civilian peace initiative.
+- @apra_cabinet_consultation: Consult APRA's leadership.
+
+@apra_debt_ceiling
+title: Enforce the Foreign-Debt Payment Ceiling
+on-arrival: {!
+Q.support = Math.min(100, Q.support + 4);
+Q.business_confidence = Math.max(0, Q.business_confidence - 5);
+Q.govt_card_available = 0;
+!}
+
+You make economic independence the defining commitment of the administration. The decision energises some supporters but risks worsening relations with creditors.
+
+These numerical effects represent the game's hypothetical consequences.
+
+- @main: Return to the presidential desk
+
+@apra_peace_commission
+title: Establish a Civilian Peace Initiative
+on-arrival: {!
+Q.legitimacy = Math.min(100, Q.legitimacy + 4);
+Q.military_confidence = Math.max(0, Q.military_confidence - 3);
+Q.govt_card_available = 0;
+!}
+
+You prioritise civilian oversight and dialogue in responding to Peru's political violence. This may strengthen institutional credibility while creating friction with security officials.
+
+- @main: Return to the presidential desk
+
+@apra_cabinet_consultation
+title: Consult APRA's Leadership
+on-arrival: {!
+Q.party_unity = Math.min(100, Q.party_unity + 5);
+Q.support = Math.min(100, Q.support + 1);
+Q.govt_card_available = 0;
+!}
+
+You consult party leaders before committing the government to its full programme. Cooperation improves, although disagreements over economic and security policy remain.
+
+- @main: Return to the presidential desk
