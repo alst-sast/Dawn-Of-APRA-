@@ -1,4 +1,3 @@
-
 title: Cabinet Briefing
 is-card: true
 tags: apra_govt_affairs
@@ -25,7 +24,7 @@ Q.govt_card_available = 0;
 
 The cabinet directs its attention towards prices, production and public finances. The decision offers a limited opportunity to improve the government's economic position.
 
-- @main: Return to the presidential desk
+- @return: Return to the presidential desk
 
 @apra_cabinet_unity
 title: Seek a Political Compromise
