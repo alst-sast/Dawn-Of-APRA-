@@ -15,6 +15,7 @@ go-to: start_menu_2
 - @credits: Credits
 - @mod_info: Mod info
 
+
 @start
 title: Start game
 on-arrival: {!
@@ -49,6 +50,7 @@ The 1985 general election is approaching. This mode will focus on the electoral 
 - @start: Start the main campaign
 - @start_menu_2: Return to main menu
 
+
 @credits
 title: Credits
 
@@ -58,9 +60,10 @@ title: Credits
 
 Developed by alst-sast.
 
-An independent historical political strategy game inspired by Peru's political history.
+An independent historical political strategy game inspired by the political history of Peru.
 
 - @start_menu_2: Return to main menu
+
 
 @mod_info
 title: Mod info
