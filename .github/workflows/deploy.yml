@@ -29,8 +29,29 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build game
+      - name: Build APRA game
         run: npm run build
+
+      - name: Restore original game interface
+        shell: bash
+        run: |
+          git clone --depth 1 https://github.com/aucchen/social_democracy_alternate_history.git /tmp/social-democracy-ui
+
+          cp /tmp/social-democracy-ui/out/html/index.html out/html/index.html
+          cp /tmp/social-democracy-ui/out/html/game.css out/html/game.css
+          cp /tmp/social-democracy-ui/out/html/game.js out/html/game.js
+          cp /tmp/social-democracy-ui/out/html/d3-parliament.js out/html/d3-parliament.js
+          cp /tmp/social-democracy-ui/out/html/d3-linegraph.js out/html/d3-linegraph.js
+
+          sed -i 's/Social Democracy: An Alternate History/The Dawn of APRA/g' out/html/index.html out/html/game.js
+          sed -i 's#<h2 id="game-author">Autumn Chen</h2>#<h2 id="game-author">alst-sast</h2>#' out/html/index.html
+          sed -i 's/Autumn Chen/alst-sast/g' out/html/game.js
+          sed -i 's#<script src="d3.v7.min.js"></script>#<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>#' out/html/index.html
+
+          test -s out/html/index.html
+          test -s out/html/game.css
+          test -s out/html/game.js
+          test -s out/html/core.js
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
