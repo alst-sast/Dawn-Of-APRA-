@@ -53,6 +53,66 @@ jobs:
           test -s out/html/game.js
           test -s out/html/core.js
 
+      - name: Fix sidebar and font-size startup errors
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("out/html/game.js")
+          text = path.read_text()
+
+          start_marker = "  window.updateSidebar = function() {"
+          end_marker = "  window.changeTab = function(newTab, tabId) {"
+
+          start = text.find(start_marker)
+          end = text.find(end_marker, start)
+
+          if start < 0 or end < 0:
+              raise SystemExit("Could not locate the sidebar function in game.js")
+
+          replacement = """  window.updateSidebar = function() {
+              $('#qualities').empty();
+
+              var ui = window.dendryUI;
+              var scene = ui && ui.game && ui.game.scenes
+                  ? ui.game.scenes[window.statusTab]
+                  : null;
+
+              if (!scene) {
+                  $('#qualities').text('APRA statistics will appear here.');
+                  return;
+              }
+
+              if (scene.onArrival) {
+                  ui.dendryEngine._runActions(scene.onArrival);
+              }
+
+              if (scene.content) {
+                  var displayContent = ui.dendryEngine._makeDisplayContent(scene.content, true);
+                  $('#qualities').append(ui.contentToHTML.convert(displayContent));
+              }
+          };\n\n"""
+
+          text = text[:start] + replacement + text[end:]
+
+          marker = "    window.dendryUI.loadSettings({show_portraits: false});"
+
+          if marker not in text:
+              raise SystemExit("Could not locate the font-size initialization point")
+
+          fallback = marker + """
+              if (typeof window.dendryUI.font_size !== 'number' ||
+                  !Number.isFinite(window.dendryUI.font_size)) {
+                  window.dendryUI.font_size = 1.1;
+              }"""
+
+          text = text.replace(marker, fallback, 1)
+          path.write_text(text)
+
+          print("Fixed missing sidebar scenes and font-size initialization.")
+          PY
+
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
