@@ -6,6 +6,6 @@
     "build": "dendrynexus make-html --force --pretty"
   },
   "dependencies": {
-    "dendrynexus": "github:aucchen/dendrynexus"
+    "dendrynexus": "github:aucchen/dendrynexus#aa4287ed2c03940c52b190c0a8c102b795ac1c79"
   }
 }
