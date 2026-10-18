@@ -1,0 +1,111 @@
+
+title: Status
+new-page: true
+is-special: true
+on-arrival: {!
+if (typeof Q.year !== 'number') Q.year = 1985;
+if (typeof Q.month !== 'number') Q.month = 3;
+if (typeof Q.month_name !== 'string') Q.month_name = 'March';
+if (typeof Q.support !== 'number') Q.support = 68;
+if (typeof Q.party_unity !== 'number') Q.party_unity = 76;
+if (typeof Q.legitimacy !== 'number') Q.legitimacy = 72;
+if (typeof Q.economic_capacity !== 'number') Q.economic_capacity = 45;
+if (typeof Q.military_confidence !== 'number') Q.military_confidence = 54;
+if (typeof Q.business_confidence !== 'number') Q.business_confidence = 50;
+if (typeof Q.insurgency_pressure !== 'number') Q.insurgency_pressure = 45;
+if (typeof Q.inflation !== 'number') Q.inflation = 160;
+if (typeof Q.coup_risk !== 'number') Q.coup_risk = 15;
+if (typeof Q.party_resources !== 'number') Q.party_resources = 4;
+Q.internal_dissent = Math.max(0, 100 - Q.party_unity);
+Q.inflation_display = Number(Q.inflation).toFixed(1);
+if (Q.year < 1985 || (Q.year === 1985 && Q.month < 4)) {
+    Q.apra_position = 'electoral campaign';
+} else if (Q.year === 1985 && Q.month < 7) {
+    Q.apra_position = 'president-elect';
+} else {
+    Q.apra_position = 'governing party';
+}
+!}
+
+= Status
+
+[+ month_name +] [+ year +]
+
+Party resources: [+ party_resources +]
+
+APRA position: [+ apra_position +]
+
+= Government
+
+APRA leader: Alan García
+
+Public support: [+ support +]/100
+
+Party unity: [+ party_unity +]/100
+
+Democratic legitimacy: [+ legitimacy +]/100
+
+= Economics
+
+Economic capacity: [+ economic_capacity +]/100
+
+Business confidence: [+ business_confidence +]/100
+
+Annual inflation (game model): [+ inflation_display +]%
+
+= Security
+
+Military confidence: [+ military_confidence +]/100
+
+Insurgency pressure: [+ insurgency_pressure +]/100
+
+Coup risk: [+ coup_risk +]/100
+
+
+@politics
+on-arrival: {!
+Q.internal_dissent = Math.max(0, 100 - Q.party_unity);
+!}
+
+= Political Landscape
+
+APRA party unity: [+ party_unity +]/100
+
+Internal dissent: [+ internal_dissent +]/100
+
+Public support: [+ support +]/100
+
+Democratic legitimacy: [+ legitimacy +]/100
+
+Business confidence: [+ business_confidence +]/100
+
+Party resources: [+ party_resources +]
+
+
+@paramilitary
+
+= Defense and Security
+
+Military confidence: [+ military_confidence +]/100
+
+Insurgency pressure: [+ insurgency_pressure +]/100
+
+Coup risk: [+ coup_risk +]/100
+
+Democratic legitimacy: [+ legitimacy +]/100
+
+
+@polls
+on-arrival: {!
+Q.support_display = Math.round(Q.support);
+!}
+
+= Polls and Political Outlook
+
+Public support: [+ support_display +]%
+
+APRA party unity: [+ party_unity +]/100
+
+Democratic legitimacy: [+ legitimacy +]/100
+
+The electoral campaign begins in March 1985, with the general election approaching in April.
