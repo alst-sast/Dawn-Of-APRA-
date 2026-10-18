@@ -4,12 +4,10 @@ go-to: main
 on-arrival: {!
 Q.time += 1;
 Q.month += 1;
-
 if (Q.month > 12) {
     Q.month = 1;
     Q.year += 1;
 }
-
 Q.month_name = Q.month_names[Q.month - 1];
 Q.party_card_available = 1;
 Q.govt_card_available = 1;
