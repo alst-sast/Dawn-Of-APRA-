@@ -32,11 +32,11 @@ jobs:
       - name: Build game
         run: npm run build
 
-            - name: Deploy website
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
         with:
-          artifact_name: dawn-apra-pages-${{ github.run_attempt }}
+          name: dawn-apra-pages-${{ github.run_id }}-${{ github.run_attempt }}
+          path: out/html
 
   deploy:
     needs: build
@@ -48,3 +48,5 @@ jobs:
       - name: Deploy website
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: dawn-apra-pages-${{ github.run_id }}-${{ github.run_attempt }}
