@@ -1,4 +1,3 @@
-
 name: Build and Publish The Dawn of APRA
 
 on:
@@ -33,9 +32,10 @@ jobs:
       - name: Build game
         run: npm run build
 
-      - name: Upload website
+           - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
+          name: dawn-apra-pages-${{ github.run_attempt }}
           path: out/html
 
   deploy:
