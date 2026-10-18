@@ -1,13 +1,9 @@
 title: Root Scene
-
 new-page: true
-
 go-to: main if started = 1; start_menu if started = 0
 
 @start_menu
-
 new-page: true
-
 go-to: start_menu_2
 
 = The Dawn of APRA
@@ -18,7 +14,6 @@ go-to: start_menu_2
 - @election_simulation: Election simulation
 - @credits: Credits
 - @mod_info: Mod info
-
 
 @start
 title: Start game
@@ -43,7 +38,6 @@ Q.decisions_this_month = 0;
 go-to: main
 
 @election_simulation
-
 title: Election simulation
 
 = Election simulation
@@ -55,9 +49,7 @@ The 1985 general election is approaching. This mode will focus on the electoral 
 - @start: Start the main campaign
 - @start_menu_2: Return to main menu
 
-
 @credits
-
 title: Credits
 
 = Credits
@@ -66,13 +58,11 @@ title: Credits
 
 Developed by alst-sast.
 
-An independent historical political strategy game inspired by the political history of Peru.
+An independent historical political strategy game inspired by Peru's political history.
 
 - @start_menu_2: Return to main menu
 
-
 @mod_info
-
 title: Mod info
 
 = The Dawn of APRA
