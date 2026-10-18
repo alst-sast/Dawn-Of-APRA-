@@ -1,24 +1,22 @@
 title: Root Scene
 new-page: true
-go-to: main if started = 1; start_menu if started = 0
+go-to: start_menu
 
 @start_menu
+title: The Dawn of APRA
 new-page: true
-go-to: start_menu_2
 
 = THE DAWN OF APRA
-
-@start_menu_2
 
 = PERU, MARCH 1985
 
 **The road to the presidency begins here.**
 
-Peru stands at a political crossroads. Alan García and APRA are preparing for the general election on 14 April 1985.
+You are Alan García, leader and presidential candidate of APRA, preparing for the Peruvian general election on 14 April 1985.
 
-Organise the party, establish your campaign priorities, negotiate with political allies and prepare for the electoral contest that will determine Peru's future.
+Organise your party, prepare your economic programme, negotiate with political allies and respond to the challenges facing Peru.
 
-Your decisions will shape the election campaign and the government that follows.
+Every decision will shape your campaign and the future government.
 
 - @start: Begin the campaign
 
@@ -31,7 +29,6 @@ Q.year = 1985;
 Q.month = 3;
 Q.month_names = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 Q.month_name = 'March';
-
 Q.support = 68;
 Q.party_unity = 76;
 Q.legitimacy = 72;
@@ -39,7 +36,6 @@ Q.economic_capacity = 45;
 Q.military_confidence = 54;
 Q.business_confidence = 50;
 Q.insurgency_pressure = 45;
-
 Q.party_card_available = 1;
 Q.govt_card_available = 1;
 Q.decisions_this_month = 0;
