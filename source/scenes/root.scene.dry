@@ -11,29 +11,24 @@ new-page: true
 go-to: start_menu_2
 
 = The Dawn of APRA
+
 @start_menu_2
 
 - @start: Start game
-
 - @election_simulation: Election simulation
-
 - @credits: Credits
-
 - @mod_info: Mod info
 
+
 @start
-
 title: Start game
-
 on-arrival: {!
-
 Q.started = 1;
 Q.time = 1;
 Q.year = 1985;
 Q.month = 3;
 Q.month_names = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 Q.month_name = 'March';
-
 Q.support = 68;
 Q.party_unity = 76;
 Q.legitimacy = 72;
@@ -41,13 +36,10 @@ Q.economic_capacity = 45;
 Q.military_confidence = 54;
 Q.business_confidence = 50;
 Q.insurgency_pressure = 45;
-
 Q.party_card_available = 1;
 Q.govt_card_available = 1;
 Q.decisions_this_month = 0;
-
 !}
-
 go-to: main
 
 @election_simulation
@@ -58,11 +50,11 @@ title: Election simulation
 
 **Peru, April 1985**
 
-The 1985 general election is approaching. This menu entry will become a separate mode focused on the electoral campaign.
+The 1985 general election is approaching. This mode will focus on the electoral campaign.
 
 - @start: Start the main campaign
-
 - @start_menu_2: Return to main menu
+
 
 @credits
 
@@ -78,6 +70,7 @@ An independent historical political strategy game inspired by the political hist
 
 - @start_menu_2: Return to main menu
 
+
 @mod_info
 
 title: Mod info
@@ -88,7 +81,7 @@ title: Mod info
 
 **Player:** Alan García and the APRA government.
 
-Manage party factions, economic policy, public support, military relations and the insurgency while navigating one of the most turbulent periods in modern Peruvian history.
+Manage party factions, economic policy, public support, military relations and the insurgency.
 
 Your decisions will shape Peru's political future.
 
