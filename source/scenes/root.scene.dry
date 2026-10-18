@@ -1,6 +1,6 @@
 title: Root Scene
 new-page: true
-go-to: main if started = 1; start_menu if started = 0
+go-to: start_menu
 
 @start_menu
 new-page: true
