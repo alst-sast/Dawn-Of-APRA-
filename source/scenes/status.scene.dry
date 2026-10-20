@@ -1,77 +1,189 @@
-
 title: Status
+
 new-page: true
+
 is-special: true
+
 on-arrival: {!
+
 if (typeof Q.year !== 'number') Q.year = 1985;
 if (typeof Q.month !== 'number') Q.month = 3;
 if (typeof Q.month_name !== 'string') Q.month_name = 'March';
+
+if (typeof Q.resources !== 'number') Q.resources = 0;
 if (typeof Q.support !== 'number') Q.support = 68;
 if (typeof Q.party_unity !== 'number') Q.party_unity = 76;
 if (typeof Q.legitimacy !== 'number') Q.legitimacy = 72;
 if (typeof Q.economic_capacity !== 'number') Q.economic_capacity = 45;
-if (typeof Q.military_confidence !== 'number') Q.military_confidence = 54;
 if (typeof Q.business_confidence !== 'number') Q.business_confidence = 50;
+if (typeof Q.military_confidence !== 'number') Q.military_confidence = 54;
 if (typeof Q.insurgency_pressure !== 'number') Q.insurgency_pressure = 45;
-if (typeof Q.inflation !== 'number') Q.inflation = 160;
 if (typeof Q.coup_risk !== 'number') Q.coup_risk = 15;
+
 if (typeof Q.party_resources !== 'number') Q.party_resources = 4;
-Q.internal_dissent = Math.max(0, 100 - Q.party_unity);
+if (typeof Q.inflation !== 'number') Q.inflation = 160;
+if (typeof Q.economic_growth !== 'number') Q.economic_growth = 0;
+
 Q.inflation_display = Number(Q.inflation).toFixed(1);
+Q.economic_growth_display = Number(Q.economic_growth).toFixed(1);
+
+Q.internal_dissent = Math.max(0, 100 - Q.party_unity);
+
+if (Q.party_unity >= 75) {
+    Q.internal_dissent_label = 'very low';
+} else if (Q.party_unity >= 60) {
+    Q.internal_dissent_label = 'low';
+} else if (Q.party_unity >= 45) {
+    Q.internal_dissent_label = 'moderate';
+} else if (Q.party_unity >= 30) {
+    Q.internal_dissent_label = 'high';
+} else {
+    Q.internal_dissent_label = 'very high';
+}
+
 if (Q.year < 1985 || (Q.year === 1985 && Q.month < 4)) {
-    Q.apra_position = 'electoral campaign';
+    Q.apra_position = 'opposition';
 } else if (Q.year === 1985 && Q.month < 7) {
     Q.apra_position = 'president-elect';
-} else {
+} else if (Q.year < 1990 || (Q.year === 1990 && Q.month < 7)) {
     Q.apra_position = 'governing party';
+} else {
+    Q.apra_position = 'opposition';
 }
+
+if (Q.year < 1985 || (Q.year === 1985 && Q.month < 7)) {
+    Q.president_name = 'Fernando Belaúnde Terry';
+    Q.prime_minister_name = 'Luis Pércovich Roca';
+    Q.prime_minister_party = 'Popular Action';
+} else if (Q.year < 1990 || (Q.year === 1990 && Q.month < 7)) {
+    Q.president_name = 'Alan García';
+
+    if (Q.year < 1987 || (Q.year === 1987 && Q.month < 7)) {
+        Q.prime_minister_name = 'Luis Alva Castro';
+    } else if (Q.year < 1988 || (Q.year === 1988 && Q.month < 5)) {
+        Q.prime_minister_name = 'Guillermo Larco Cox';
+    } else if (Q.year < 1989 || (Q.year === 1989 && Q.month < 5)) {
+        Q.prime_minister_name = 'Armando Villanueva del Campo';
+    } else if (Q.year === 1989 && Q.month < 10) {
+        Q.prime_minister_name = 'Luis Alberto Sánchez';
+    } else {
+        Q.prime_minister_name = 'Guillermo Larco Cox';
+    }
+
+    Q.prime_minister_party = 'APRA';
+} else {
+    Q.president_name = 'Alberto Fujimori';
+
+    if (Q.year === 1990 || (Q.year === 1991 && Q.month < 2)) {
+        Q.prime_minister_name = 'Juan Carlos Hurtado Miller';
+    } else if (Q.year === 1991 && Q.month < 11) {
+        Q.prime_minister_name = 'Carlos Torres y Torres Lara';
+    } else if (Q.year === 1991 && Q.month >= 11) {
+        Q.prime_minister_name = 'Alfonso de los Heros';
+    } else {
+        Q.prime_minister_name = 'Óscar de la Puente Raygada';
+    }
+
+    Q.prime_minister_party = 'Fujimori government';
+}
+
+if (Q.year === 1985 && Q.month <= 4) {
+    Q.next_election = '14 April 1985';
+} else if (Q.year < 1990 || (Q.year === 1990 && Q.month <= 4)) {
+    Q.next_election = '8 April 1990';
+} else {
+    Q.next_election = '9 April 1995';
+}
+
+if (Q.year < 1985 || (Q.year === 1985 && Q.month < 7)) {
+    Q.congress_apra = 32.2;
+    Q.congress_popular_action = 54.4;
+    Q.congress_united_left = 5.6;
+    Q.congress_center_label = "Christian People's Party (PPC)";
+    Q.congress_center = 5.6;
+    Q.congress_small_label = 'FRENATRACA';
+    Q.congress_small = 2.2;
+    Q.congress_independents = 0.0;
+    Q.congress_other = 0.0;
+} else {
+    Q.congress_apra = 59.4;
+    Q.congress_popular_action = 5.6;
+    Q.congress_united_left = 26.7;
+    Q.congress_center_label = 'Democratic Convergence';
+    Q.congress_center = 6.7;
+    Q.congress_small_label = 'National Left';
+    Q.congress_small = 0.6;
+    Q.congress_independents = 1.1;
+    Q.congress_other = 0.0;
+}
+
+Q.support_display = Math.round(Q.support);
+
 !}
 
 = Status
 
 [+ month_name +] [+ year +]
 
-Party resources: [+ party_resources +]
+Resources available: [+ resources +]
 
 APRA position: [+ apra_position +]
 
+Internal dissent: [+ internal_dissent_label +]
+
 = Government
 
-APRA leader: Alan García
+President: [+ president_name +]
 
-Public support: [+ support +]/100
+Prime Minister: [+ prime_minister_name +] ([+ prime_minister_party +])
 
-Party unity: [+ party_unity +]/100
+National Congress composition:
 
-Democratic legitimacy: [+ legitimacy +]/100
+APRA: [+ congress_apra +]%
+
+Popular Action (AP): [+ congress_popular_action +]%
+
+United Left (IU): [+ congress_united_left +]%
+
+[+ congress_center_label +]: [+ congress_center +]%
+
+[+ congress_small_label +]: [+ congress_small +]%
+
+Independents: [+ congress_independents +]%
+
+Others: [+ congress_other +]%
+
+Next election: [+ next_election +]
 
 = Economics
 
-Economic capacity: [+ economic_capacity +]/100
+Inflation: [+ inflation_display +]%
 
-Business confidence: [+ business_confidence +]/100
-
-Annual inflation (game model): [+ inflation_display +]%
-
-= Security
-
-Military confidence: [+ military_confidence +]/100
-
-Insurgency pressure: [+ insurgency_pressure +]/100
-
-Coup risk: [+ coup_risk +]/100
-
+Economic growth: [+ economic_growth_display +]%
 
 @politics
+
 on-arrival: {!
 Q.internal_dissent = Math.max(0, 100 - Q.party_unity);
+
+if (Q.party_unity >= 75) {
+    Q.internal_dissent_label = 'very low';
+} else if (Q.party_unity >= 60) {
+    Q.internal_dissent_label = 'low';
+} else if (Q.party_unity >= 45) {
+    Q.internal_dissent_label = 'moderate';
+} else if (Q.party_unity >= 30) {
+    Q.internal_dissent_label = 'high';
+} else {
+    Q.internal_dissent_label = 'very high';
+}
 !}
 
 = Political Landscape
 
 APRA party unity: [+ party_unity +]/100
 
-Internal dissent: [+ internal_dissent +]/100
+Internal dissent: [+ internal_dissent_label +]
 
 Public support: [+ support +]/100
 
@@ -80,7 +192,6 @@ Democratic legitimacy: [+ legitimacy +]/100
 Business confidence: [+ business_confidence +]/100
 
 Party resources: [+ party_resources +]
-
 
 @paramilitary
 
@@ -94,11 +205,7 @@ Coup risk: [+ coup_risk +]/100
 
 Democratic legitimacy: [+ legitimacy +]/100
 
-
 @polls
-on-arrival: {!
-Q.support_display = Math.round(Q.support);
-!}
 
 = Polls and Political Outlook
 
@@ -107,5 +214,3 @@ Public support: [+ support_display +]%
 APRA party unity: [+ party_unity +]/100
 
 Democratic legitimacy: [+ legitimacy +]/100
-
-The electoral campaign begins in March 1985, with the general election approaching in April.
